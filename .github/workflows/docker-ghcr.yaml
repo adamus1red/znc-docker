@@ -66,7 +66,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
             latest=false
-            prefix=slim
+            prefix="slim-"
           tags: |
             type=schedule
             type=semver,pattern={{version}}
@@ -84,7 +84,7 @@ jobs:
           context: ./slim/
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:slim,${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       # Sign the resulting Docker image digest except on PRs.
@@ -144,7 +144,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
             latest=auto
-            prefix=full
+            prefix="full-"
           tags: |
             type=schedule
             type=semver,pattern={{version}}
@@ -161,7 +161,7 @@ jobs:
           context: ./full/
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:full,${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       # Sign the resulting Docker image digest except on PRs.
