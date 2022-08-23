@@ -1,4 +1,4 @@
-FROM znc:slim
+FROM ghcr.io/adamus1red/znc-docker:slim
 
 # znc:slim removed them. Install them again.
 RUN set -x \
