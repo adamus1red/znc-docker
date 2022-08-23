@@ -66,7 +66,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
             latest=true
-            prefix=slim,onlatest=true
+            prefix=slim
           tags: |
             type=schedule
             type=semver,pattern={{version}}
@@ -144,7 +144,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
             latest=true
-            prefix=full,onlatest=true
+            prefix=full
           tags: |
             type=schedule
             type=semver,pattern={{version}}
