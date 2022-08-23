@@ -65,7 +65,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
-            latest=true
+            latest=false
             prefix=slim
           tags: |
             type=schedule
@@ -143,7 +143,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
-            latest=true
+            latest=auto
             prefix=full
           tags: |
             type=schedule
